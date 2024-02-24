@@ -4,6 +4,7 @@ import App from "./App";
 import { reset } from "styled-reset";
 import { createGlobalStyle } from "styled-components";
 import { ChakraProvider } from "@chakra-ui/react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -19,6 +20,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
@@ -26,7 +29,9 @@ root.render(
     <>
         <GlobalStyle />
         <ChakraProvider>
-            <App />
+            <QueryClientProvider client={queryClient}>
+                <App />
+            </QueryClientProvider>
         </ChakraProvider>
     </>
 );
