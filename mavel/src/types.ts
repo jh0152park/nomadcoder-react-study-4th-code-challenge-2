@@ -57,7 +57,7 @@ interface IUrls {
     url: string;
 }
 
-interface IEntireCharacter {
+export interface ICharacter {
     id: number;
     name: string;
     description: string;
@@ -73,7 +73,7 @@ interface IEntireCharacter {
 export interface IEntireCharacterResponse {
     data: {
         data: {
-            results: IEntireCharacter[];
+            results: ICharacter[];
         };
     };
 }
