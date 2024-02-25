@@ -2,6 +2,9 @@ import { useQuery } from "react-query";
 import { getEntireCharacter } from "../api";
 import { IEntireCharacterResponse } from "../types";
 import Loading from "../components/common/Loading";
+import { Suspense } from "react";
+import Banner from "../components/home/Banner";
+import Paint from "../components/home/Paint";
 
 export default function Home() {
     const characters = useQuery<IEntireCharacterResponse>(
@@ -9,12 +12,14 @@ export default function Home() {
         getEntireCharacter
     );
 
-    // if (!characters.isLoading) console.log(characters.data?.data.data.results);
-    console.log(characters.data);
+    console.log(characters.data?.data.data.results);
 
     return (
         <>
-            <Loading />
+            <Banner />
+            <Suspense fallback={<Loading />}>
+                <Paint />
+            </Suspense>
         </>
     );
 }
