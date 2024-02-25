@@ -1,5 +1,6 @@
 import { Box, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { ProfileIamges } from "../../profileImage";
 
 interface IProps {
     name: string;
@@ -36,7 +37,11 @@ export default function Thumbnail({ name, imagePath, imageExtension }: IProps) {
             />
             <Box overflow="hidden" w="100%" h="60%" position="absolute">
                 <Image
-                    src={`${imagePath}.${imageExtension}`}
+                    src={
+                        Object.keys(ProfileIamges).includes(name.toLowerCase())
+                            ? ProfileIamges[name.toLowerCase()]
+                            : `${imagePath}.${imageExtension}`
+                    }
                     objectFit="cover"
                     transform={isHover ? "scale(1.1)" : "scale(1.0)"}
                     transition="all 0.2s linear"
