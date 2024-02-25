@@ -1,15 +1,23 @@
 import { Box, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { ProfileIamges } from "../../profileImage";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
+    id: number | string;
     name: string;
     imagePath: string;
     imageExtension: string;
 }
 
-export default function Thumbnail({ name, imagePath, imageExtension }: IProps) {
+export default function Thumbnail({
+    id,
+    name,
+    imagePath,
+    imageExtension,
+}: IProps) {
     let characterName = [];
+    const navigate = useNavigate();
     const [isHover, setIsHover] = useState(false);
 
     if (name.includes("(")) {
@@ -17,6 +25,10 @@ export default function Thumbnail({ name, imagePath, imageExtension }: IProps) {
         characterName.push("(" + name.split("(")[1]);
     } else {
         characterName.push(name);
+    }
+
+    function onCharacterClick() {
+        navigate(`/${id}`);
     }
 
     return (
@@ -28,6 +40,7 @@ export default function Thumbnail({ name, imagePath, imageExtension }: IProps) {
             onMouseOver={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
             _hover={{ cursor: "pointer" }}
+            onClick={onCharacterClick}
         >
             <Box
                 w="100%"
