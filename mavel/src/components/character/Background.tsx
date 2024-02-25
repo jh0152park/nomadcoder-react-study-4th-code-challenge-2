@@ -1,4 +1,4 @@
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 export default function Background({ url }: { url: string }) {
     const outerBoxStyles = {
