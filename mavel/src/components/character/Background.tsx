@@ -21,7 +21,7 @@ export default function Background({ url }: { url: string }) {
     };
 
     return (
-        <Box sx={outerBoxStyles}>
+        <Box sx={outerBoxStyles} position="fixed" top="0">
             <Box
                 sx={innerBoxStyles}
                 backdropFilter="auto"
