@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
+import Detail from "../components/character/Detail";
 
 export default function Character() {
     const { id: characterId } = useParams();
 
-    return <h1>{characterId}</h1>;
+    return <Detail characterId={characterId!} />;
 }

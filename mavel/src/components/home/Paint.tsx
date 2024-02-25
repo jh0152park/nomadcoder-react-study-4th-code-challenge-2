@@ -3,6 +3,7 @@ import { Center, Grid } from "@chakra-ui/react";
 import { getEntireCharacter } from "../../api";
 import { IEntireCharacterResponse } from "../../types";
 import Thumbnail from "./Thumbnail";
+import Loading from "../common/Loading";
 
 export default function Paint() {
     const characters = useQuery<IEntireCharacterResponse>(
@@ -10,7 +11,9 @@ export default function Paint() {
         getEntireCharacter
     );
 
-    return (
+    return characters.isLoading ? (
+        <Loading />
+    ) : (
         <Center w="100%" minH="100vh" my="50px">
             <Grid
                 templateColumns={{
