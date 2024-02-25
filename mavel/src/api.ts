@@ -8,6 +8,7 @@ export async function getEntireCharacter() {
 }
 
 export async function getCharacterDetail({ queryKey }: QueryFunctionContext) {
+    // eslint-disable-next-line
     const [_, id] = queryKey;
     return await axios.get(
         `https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters/${id}`
