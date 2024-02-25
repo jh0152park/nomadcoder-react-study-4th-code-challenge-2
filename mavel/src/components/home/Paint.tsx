@@ -1,12 +1,17 @@
-import { Box, Center, Grid, GridItem } from "@chakra-ui/react";
+import { useQuery } from "react-query";
+import { Center, Grid } from "@chakra-ui/react";
+import { getEntireCharacter } from "../../api";
+import { IEntireCharacterResponse } from "../../types";
+import Thumbnail from "./Thumbnail";
 
 export default function Paint() {
-    const dummy = new Array(40).fill(0);
-
-    console.log(dummy);
+    const characters = useQuery<IEntireCharacterResponse>(
+        ["characters"],
+        getEntireCharacter
+    );
 
     return (
-        <Center w="100%" minH="100vh" justifyContent="center" my="50px">
+        <Center w="100%" minH="100vh" my="50px">
             <Grid
                 templateColumns={{
                     base: "repeat(1, 1fr)",
@@ -15,8 +20,13 @@ export default function Paint() {
                 }}
                 gap={10}
             >
-                {dummy.map((t, i) => (
-                    <Box w="200px" h="270px" bg="pink" key={i} />
+                {characters.data?.data.data.results.map((character) => (
+                    <Thumbnail
+                        key={character.id}
+                        name={character.name}
+                        imagePath={character.thumbnail.path}
+                        imageExtension={character.thumbnail.extension}
+                    />
                 ))}
             </Grid>
         </Center>
