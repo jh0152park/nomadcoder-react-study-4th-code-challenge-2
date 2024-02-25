@@ -8,7 +8,15 @@ interface IProps {
 }
 
 export default function Thumbnail({ name, imagePath, imageExtension }: IProps) {
+    let characterName = [];
     const [isHover, setIsHover] = useState(false);
+
+    if (name.includes("(")) {
+        characterName.push(name.split("(")[0]);
+        characterName.push("(" + name.split("(")[1]);
+    } else {
+        characterName.push(name);
+    }
 
     return (
         <VStack
@@ -35,9 +43,11 @@ export default function Thumbnail({ name, imagePath, imageExtension }: IProps) {
                 />
             </Box>
             <Box w="100%" position="absolute" top="66%" left="5%">
-                <Text fontWeight="bold" fontSize="20px">
-                    {name}
-                </Text>
+                {characterName.map((n, i) => (
+                    <Text key={i} fontWeight="bold" fontSize="20px">
+                        {n}
+                    </Text>
+                ))}
             </Box>
         </VStack>
     );
