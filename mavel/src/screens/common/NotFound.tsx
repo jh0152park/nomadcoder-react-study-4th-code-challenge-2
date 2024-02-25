@@ -9,17 +9,20 @@ export default function NotFound() {
             <Image
                 w="100%"
                 h="100%"
-                src="resource/images/notfound.jpg"
+                src={require("../../resource/images/notfound.jpg")}
                 objectFit="cover"
                 position="fixed"
                 zIndex="98"
             />
             <VStack zIndex="99">
                 <Heading fontSize="70px" fontFamily="Bungee Spice">
-                    Page Not Found
+                    404 Page Not Found
+                </Heading>
+                <Heading fontSize="40px" fontFamily="Bungee Spice">
+                    $#&$, you broke something!!!
                 </Heading>
                 <Heading
-                    fontSize="70px"
+                    fontSize="40px"
                     fontFamily="Bungee Spice"
                     _hover={{ cursor: "pointer", transform: ["scale(1.1)"] }}
                     transition="all 0.1s linear"

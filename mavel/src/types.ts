@@ -57,7 +57,7 @@ interface IUrls {
     url: string;
 }
 
-export interface ICharacter {
+interface ICharacter {
     id: number;
     name: string;
     description: string;
@@ -74,6 +74,28 @@ export interface IEntireCharacterResponse {
     data: {
         data: {
             results: ICharacter[];
+        };
+    };
+}
+
+export interface ICharacterDetail {
+    id: number;
+    name: string;
+    description: string;
+    modified: string;
+    thumbnail: IThumbnail;
+    resourceURI: string;
+    comics: IComics;
+    series: ISeries;
+    stories: IStories;
+    events: IEvents;
+    urls: IUrls[];
+}
+
+export interface ICharacterDetailResponse {
+    data: {
+        data: {
+            results: ICharacterDetail[];
         };
     };
 }

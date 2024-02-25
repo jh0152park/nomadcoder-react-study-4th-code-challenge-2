@@ -1,5 +1,6 @@
 import { Center, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { goToTop } from "../../libs/util";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function Header() {
                 _hover={{ cursor: "pointer" }}
                 transition="all 0.1s linear"
                 onClick={() => {
+                    goToTop();
                     navigate("/");
                 }}
             />

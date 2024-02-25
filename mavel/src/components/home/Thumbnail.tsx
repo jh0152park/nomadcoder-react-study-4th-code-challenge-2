@@ -1,7 +1,8 @@
-import { Box, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { ProfileIamges } from "../../profileImage";
 import { useNavigate } from "react-router-dom";
+import { goToTop } from "../../libs/util";
 
 interface IProps {
     id: number | string;
@@ -28,6 +29,7 @@ export default function Thumbnail({
     }
 
     function onCharacterClick() {
+        goToTop();
         navigate(`/${id}`);
     }
 
