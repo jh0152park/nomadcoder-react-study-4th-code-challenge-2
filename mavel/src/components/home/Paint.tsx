@@ -23,6 +23,7 @@ export default function Paint() {
                 {characters.data?.data.data.results.map((character) => (
                     <Thumbnail
                         key={character.id}
+                        id={character.id}
                         name={character.name}
                         imagePath={character.thumbnail.path}
                         imageExtension={character.thumbnail.extension}
