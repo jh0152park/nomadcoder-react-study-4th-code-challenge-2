@@ -3,7 +3,7 @@
 
 # deploy: https://nomadcoder-react-study-4th-code-challenge-2.pages.dev/
 
-# Requirement
+# Requirements
 
 Challenge:
 
